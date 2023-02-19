@@ -48,7 +48,7 @@ const chatId = msg.chat.id;
 
  
 
-if(msg?.reply_to_message?.text=="🌐 Enter Your URL"){
+if(msg?.reply_to_message?.text=="Enter Your URL"){
  createLink(chatId,msg.text); 
 }
   
@@ -134,7 +134,7 @@ function createNew(cid){
 var mk={
 reply_markup:JSON.stringify({"force_reply":true})
 };
-bot.sendMessage(cid,`🌐 Enter Your URL`,mk);
+bot.sendMessage(cid,`Enter Your URL`,mk);
 }
 
 
